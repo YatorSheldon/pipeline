@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+                }
+            }
+        }
+
+        stage('Approval') {
+            steps {
+                script {
+                    echo "Waiting for manual approval..."
+                    sleep(time: 10, unit: 'SECONDS')  // Simulate approval with a sleep
+                }
+            }
+        }
+
+        stage('Deploy to Production') {
+            steps {
+                script {
+                    echo "Deploying the application to the production environment: ${env.PRODUCTION_ENVIRONMENT}"
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "Pipeline execution complete"
+        }
+    }
+}
